@@ -1,18 +1,24 @@
-def conversion_moneda():
-    # Solicitar al usuario el monto en soles
-    monto_pen = float(input("Ingrese el monto en soles (PEN): "))
+def calcular_tarifa():
+    # Solicitar la edad del pasajero
+    try:
+        edad = int(input("Ingrese la edad del pasajero: "))
+    except ValueError:
+        print("Por favor, ingrese una edad válida.")
+        return
     
-    # Preguntar la tasa de cambio actual
-    tasa_cambio = float(input("Ingrese la tasa de cambio actual (1 USD = ? PEN): "))
+    # Determinar la tarifa usando if-elif-else
+    if edad < 12:
+        tarifa = 3.00
+        mensaje = "Tarifa infantil"
+    elif 12 <= edad <= 59:
+        tarifa = 5.00
+        mensaje = "Tarifa regular"
+    else:
+        tarifa = 2.00
+        mensaje = "Tarifa especial"
     
-    # Calcular el equivalente en dólares
-    equivalente_usd = monto_pen / tasa_cambio
-    
-    # Mostrar el resultado con dos decimales
-    print("\n--- Conversión en Global Change ---")
-    print(f"Monto en soles: S/ {monto_pen:.2f}")
-    print(f"Tasa de cambio: 1 USD = S/ {tasa_cambio:.2f}")
-    print(f"Equivalente en dólares: $ {equivalente_usd:.2f}")
+    # Mostrar el precio final con un mensaje claro y formateado
+    print(f"{mensaje}: S/ {tarifa:.2f}")
 
 # Ejecutar la función
-conversion_moneda()
+calcular_tarifa()
